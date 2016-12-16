@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <title>What's up?</title>
+		<style>
+			label,input {
+				font-size: 24px;
+				font-family: Helvetica;
+			}
+			td {
+				padding: 10px;
+				margin: 10px;
+				background-color: #ffffdd;
+			}
+			body {
+				background-color: #002222;
+			}
+			h1, h2 {
+				font-family: Helvetica;
+				margin: 5px 0px;
+				padding: 0;
+			}
+			h1 {
+				font-size: 48px;
+				color: #aaaaff;
+			}
+			h2 {
+				font-size: 24px;
+				color: #ffddaa;
+			}
+			input {
+				border: 3px solid #cccccc;
+				font-family: Georgia;
+			}
+			#comments {
+				width: 100%;
+				height: auto;
+				//font-size: 15px;
+			}
+			
+		</style>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			var d = new Date();
+			var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", 
+									"Thursday", "Friday", "Saturday"];
+			var MONTHS = ["January", "February", "March", "April",
+										"May", "June", "July", "August", "September",
+										"October", "November", "December"];
+			function createFilename() {
+				var day = DAYS[d.getDay()];
+				var month = MONTHS[d.getMonth()];
+				var today = day + ", " + month + " " + d.getDate() + ", " + d.getFullYear();
+				var minutes = d.getMinutes();
+				if(minutes < 10)
+					minutes = "0" + minutes;
+				var now = d.getHours() + ":" + minutes;
+				title_input = document.getElementById('title');
+				title_input.value = today + " at " + now;
+			}
+		</script>
+	</head>
+
+	<body onload="createFilename()">
+		<h1>New Logbook Entry</h1>
+		<form action="uploading.php" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td><label for="title">Title</label> </td>
+					<td><input id="title" type="text" value="Untitled" name="title" size=40></input> </td>
+				</tr>
+				<tr>
+					<td><label for="comments">Irrelevant details</label></td>
+					<td><input id="comments" type="textarea" value="I did absolutely nothing, and it was everything that I thought it could be." name="comments" rows="10"></input></td>
+				<tr>
+					<td> <label for="add">Photo </label> </td>
+					<td> <input type="file" accept="image/*" capture="camera" id="cameraInput" value="Browse" name="add"> </td>
+				</tr>
+				<tr>
+					<td><label for="submit">BAM!</label></td>
+					<td> <input type="submit" value="Upload image" name="submit">		</td>
+				</tr>
+			</table>
+		</form>	
+	
+	</body>
+</html>
+
