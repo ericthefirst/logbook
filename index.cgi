@@ -35,7 +35,7 @@ print("\t\t\tbackground-color: #55bbdd;")
 print("\t\t\t}")
 
 print("\t\t\ttr.title > td {")
-print("\t\t\t\tpadding: 0 10px 0;")
+print("\t\t\t\tpadding: 15px 10px 10px 15px;")
 print("\t\t\t}")
 
 print("\t\t\ttable {")
